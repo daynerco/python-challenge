@@ -15,9 +15,11 @@ past_month_loss = 0
 current_month_loss = 0
 profit_loss_delta = 0
 
+# Change directory to the directory of current python script
+os.chdir(os.path.dirname(__file__))
 
 #collects data from Resources directory
-csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
+csvpath = os.path.join('Resources', 'budget_data.csv')
 
 #opens and reads csv file
 with open(csvpath) as csvfile:
@@ -85,13 +87,13 @@ with open(csvpath) as csvfile:
     print(f"Greatest Decrease in Profits: {worst_month} (${lowest_delta})")
 
 # Exports the analysis results to a .txt file
-    Pybank_file = os.path.join("Analysis", "Pybank_data.txt")
-    with open(Pybank_file, "w") as outfile:
+    Pybank_results = os.path.join("Analysis", "Pybank_data.txt")
+    with open(Pybank_results, "w") as outfile:
 
-     outfile.write("Financial Analysis\n")
-    outfile.write("----------------------------\n")
-    outfile.write(f"Total Months:  {month_count}\n")
-    outfile.write(f"Total:  ${net_profit_loss}\n")
-    outfile.write(f"Average Change:  ${average_profit_loss}\n")
-    outfile.write(f"Greatest Increase in Profits:  {best_month} (${highest_delta})\n")
-    outfile.write(f"Greatest Decrease in Losses:  {worst_month} (${lowest_delta})\n")
+        outfile.write("Financial Analysis\n")
+        outfile.write("----------------------------\n")
+        outfile.write(f"Total Months:  {month_count}\n")
+        outfile.write(f"Total:  ${net_profit_loss}\n")
+        outfile.write(f"Average Change:  ${average_profit_loss}\n")
+        outfile.write(f"Greatest Increase in Profits:  {best_month} (${highest_delta})\n")
+        outfile.write(f"Greatest Decrease in Losses:  {worst_month} (${lowest_delta})\n")
